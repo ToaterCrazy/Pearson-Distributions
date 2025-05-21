@@ -21,7 +21,7 @@ class CalcStats():
         self.maxVal = max(dataArr)
         self.minVal = min(dataArr)
         if self.maxVal == self.minVal:
-            #Skips over data of same values and draws a rectangle.
+            #Skips over data of same values and draws a rectangle later on in the graphing section.
             self.mean = self.maxVal
             self.mode = self.maxVal
             self.curveType = 'Skipped due to same values'
@@ -34,7 +34,7 @@ class CalcStats():
             #Normal calculation
             self.step = (self.maxVal - self.minVal)/stepH
             self.binsold = np.linspace(self.minVal, self.maxVal, stepH+1)
-            self.bins2 = np.linspace(self.minVal, self.maxVal, stepH) #+1 # fucking madness
+            self.bins2 = np.linspace(self.minVal, self.maxVal, stepH) #+1 # ### madness and I do not remember why this is...
             self.binWidth = self.bins2[1] - self.bins2[0]
             self.bins = self.bins2 + self.binWidth / 2
             self.freq, _ = np.histogram(dataArr, bins=self.binsold)
@@ -177,7 +177,7 @@ class CalcStats():
                 self.Pint.append(self.Pint[i-1]+0.5*(self.P[i]+self.P[i-1])*(self.X[i]-self.X[i-1]))
                 i+=1
             self.y0 = sum(self.freq)/self.Pint[-1]
-            # Origin fucks up! Of course it would fuck up if you put a '+' instead of a '*'. Degenerate!
+            # Origin ### up! Of course it would ### up if you put a '+' instead of a '*'. ###! FIXED, this comment will stay here to remind me of the days I've spent trying to find this error.
             self.Origin = self.mean+self.v*self.aNew/self.r
             self.mode = self.mean-0.5*self.mu3*(self.r-2)/(self.mu2*(self.r+2)) * self.step
             y = self.y0*((1+(((self.x-self.Origin)/self.aNew)**2))**(-self.m))*np.exp(-self.v*np.arctan((self.x-self.Origin)/self.aNew))
@@ -217,7 +217,7 @@ class CalcStats():
             self.q1 = min(self.roots)
             if self.q1 < 0: self.q1 = self.q1*(-1)
             self.q2 = max(self.roots)
-            # Thank you stackoverflow. The problem was something with negative floating points and numpy fucks up with them somehow
+            # Thank you stackoverflow. The problem was something with negative floating points and numpy ### up with them somehow
             # gamma_func dies with "OverflowError: math range error"
             self.y0 = sum(self.freq) * (np.sign(self.a) * (np.abs(self.a))**(self.q1-self.q2-1)) * gamma_func(self.q1)/(gamma_func(self.q1-self.q2-1)*gamma_func(self.q2+1))
             self.anew = self.step*self.a

@@ -48,7 +48,7 @@ def RollStats(data: list, cutoff: int = 20, stepH: int = 20, showGraphs: bool = 
             DipArr.append(DipsAuto)
             AziArr.append(AziAuto)
             # Count types of curves
-            # An extremely degenerate way to do this :)
+            # An extremely ### way to do this :)
             if DepthsAuto.curveType == 'I': CurveTypes[0] +=1
             elif DepthsAuto.curveType == 'IV': CurveTypes[1] +=1
             elif DepthsAuto.curveType == 'VI': CurveTypes[2] +=1
