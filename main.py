@@ -119,7 +119,7 @@ if __name__ == '__main__':
     with open(f"DATA.json", "r") as file:
         data = json.load(file)
     #Roll stats over data
-    counter, ResultArray, CurveTypes, SineKeyArray = RollStats(data=data, cutoff = 100, stepH = 20, ShowGraphs=True, Details=False, showPrint=False)
+    counter, ResultArray, CurveTypes, SineKeyArray = RollStats(data=data, cutoff = 100, stepH = 20, showGraphs=True, details=False, showPrint=False)
     print(f'[*] Datasets calculated: {counter}.')
     #Print resulting mode values
     print('Mode values for each dataset:')
